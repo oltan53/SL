@@ -1,11 +1,10 @@
-/* Reset some basic styles */
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* Mobile-first layout */
 body {
   font-family: 'Arial', sans-serif;
   background-color: #f6f8fc;
@@ -28,7 +27,6 @@ h1 {
   margin-bottom: 1rem;
 }
 
-/* Departure item */
 .departure {
   padding: 0.75rem 1rem;
   border-bottom: 1px solid #ddd;
@@ -46,7 +44,6 @@ h1 {
   color: #004085;
 }
 
-/* Responsive typography and spacing */
 @media (min-width: 600px) {
   h1 {
     font-size: 2rem;
@@ -60,7 +57,6 @@ h1 {
   }
 }
 
-/* Style for stop selector label and dropdown */
 label[for="stopSelector"] {
   display: block;
   margin-bottom: 0.5rem;

@@ -68,9 +68,20 @@ function displayDepartures(departures) {
 
     const minutesUntil = Math.round((expectedTime - now) / 60000);
 
+    const lineNumber = parseInt(line);
+    let lineColor = "";
+  
+    if ([17, 18, 19].includes(lineNumber)) {
+      lineColor = "green";
+    } else if ([13, 14].includes(lineNumber)) {
+      lineColor = "red";
+    } else if ([10, 11].includes(lineNumber)) {
+      lineColor = "blue";
+    }  
+
     const div = document.createElement("div");
     div.className = "departure";
-    div.innerHTML = `<strong>${line}</strong> to ${destination} at ${displayTime} <span style="color: gray;">(in ${minutesUntil} min)</span>`;
+    div.innerHTML = `<strong style="color: ${lineColor}">${line}</strong> to ${destination} at ${displayTime} <span style="color: gray;">(in ${minutesUntil} min)</span>`;
     container.appendChild(div);
   });
 }
@@ -98,13 +109,12 @@ document.addEventListener("DOMContentLoaded", () => {
   setInterval(fetchDepartures, 30000);
 });
 
-
 function displayDepartures(departures) {
   const container = document.getElementById("departures");
   container.innerHTML = "";
 
   if (!departures.length) {
-    container.innerHTML = "<p>No upcoming buses in the next 30 minutes.</p>";
+    container.innerHTML = "<p>No upcoming departures in the next 30 minutes.</p>";
     return;
   }
 
@@ -123,10 +133,23 @@ function displayDepartures(departures) {
 
     const minutesUntil = Math.round((expected - now) / 60000);
 
+    const lineNumber = parseInt(line);
+    let lineColor = "";
+
+    if ([17, 18, 19].includes(lineNumber)) {
+      lineColor = "#33A67D";
+    } else if ([13, 14].includes(lineNumber)) {
+      lineColor = "#EA0D6A";
+    } else if ([10, 11].includes(lineNumber)) {
+      lineColor = "#278ED3";
+    }
+
     const div = document.createElement("div");
     div.className = "departure";
-    div.innerHTML = `<strong>${line}</strong> to ${destination} at ${displayTime} <span style="color: gray;">(in ${minutesUntil} min)</span>`;
+    div.innerHTML = `<strong style="color: ${lineColor}">${line}</strong> to ${destination} at ${displayTime} <span style="color: gray;">(in ${minutesUntil} min)</span>`;
     container.appendChild(div);
   });
 }
 
+
+//div.innerHTML = `<strong>${line}</strong> to ${destination} at ${displayTime} <span style="color: gray;">(in ${minutesUntil} min)</span>`
